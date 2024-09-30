@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name:  ADHITHIYAN K
+<h3>Register Number: 212222230006
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -54,7 +54,6 @@ As we can see that every neighbours of node 4 are visited, so move to the next n
 Remove node 4 from the front of queue and visit the unvisited neighbours and push them into queue.
 Now, Queue becomes empty, So, terminate these process of iteration.
 
-
 <hr>
 <h2>Algorithm:</h2>
 <hr>
@@ -67,6 +66,44 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 <li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
 
 </ol>
+
+## Program:
+
+```
+from collections import defaultdict, deque
+
+def bfs(graph, start, visited, path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if not visited[neighbour]:
+                queue.append(neighbour)
+                visited[neighbour] = True
+                path.append(neighbour)
+    return path
+
+graph = defaultdict(list)
+v, e = map(int, input("Enter number of nodes and edges: ").split())
+print("Enter the edges (u v):")
+for i in range(e):
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)
+
+if '0' in graph:
+    start = '0'
+else:
+    start = 'A'
+path = []
+visited = defaultdict(bool)
+traversed_path = bfs(graph, start, visited, path)
+print("BFS Traversal Path:", traversed_path)
+```
+
 
 <hr>
 <h3>Sample Input</h3>
@@ -86,7 +123,9 @@ G F <BR>
 <hr>
 ['A', 'B', 'C', 'F', 'E', 'D', 'G']
 
-<hr>
+## Output:
+
+![3 1-fia](https://github.com/user-attachments/assets/83b61d9b-acdd-4627-9c22-7fc55b487a06)
 
 <hr>
 <h3>Sample Input</h3>
@@ -102,6 +141,46 @@ G F <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+## Program:
+
+```
+from collections import defaultdict, deque
+
+def bfs(graph, start, visited, path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if not visited[neighbour]:
+                queue.append(neighbour)
+                visited[neighbour] = True
+                path.append(neighbour)
+    return path
+
+graph = defaultdict(list)
+v, e = map(int, input("Enter number of nodes and edges: ").split())
+print("Enter the edges (u v):")
+for i in range(e):
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)
+
+if '0' in graph:
+    start = '0'
+else:
+    start = 'A'
+path = []
+visited = defaultdict(bool)
+traversed_path = bfs(graph, start, visited, path)
+print("BFS Traversal Path:", traversed_path)
+```
+## Output:
+
+![3 2-fia](https://github.com/user-attachments/assets/9ed4db2b-d787-4a12-b05c-293f3b5a20e2)
+
 <hr>
 <h3>Result:</h3>
 <hr>
